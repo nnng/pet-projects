@@ -1,5 +1,3 @@
-// controllers/taskController.js
-
 const taskService = require('../services/taskService');
 
 // получения всех задач
@@ -44,10 +42,22 @@ const deleteTask = (req, res) => {
   res.json({ message: 'Task deleted successfully' });
 };
 
+const updateTask = (req, res) => {
+  const id = parseInt(req.params.id);
+  const updatedTask = taskService.updateTask(id, req.body);
+
+  if (!updatedTask) {
+    return res.status(404).json({ message: 'Task not found' });
+  }
+
+  res.json(updatedTask);
+};
+
 // экспортируем функцию
 module.exports = {
   getTasks,
   createTask,
   getTaskById,
   deleteTask,
+  updateTask,
 };

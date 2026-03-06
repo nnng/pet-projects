@@ -41,10 +41,31 @@ const deleteTask = (id) => {
   return task;
 };
 
+// обновление задачи
+const updateTask = (id, data) => {
+  const task = tasks.find((t) => t.id === id);
+
+  if (!task) {
+    return null;
+  }
+
+  // обновляем поля если они переданы
+  if (data.title !== undefined) {
+    task.title = data.title;
+  }
+
+  if (data.completed !== undefined) {
+    task.completed = data.completed;
+  }
+
+  return task;
+};
+
 // экспорт
 module.exports = {
   getAllTasks,
   getTaskById,
   createTask,
   deleteTask,
+  updateTask,
 };
