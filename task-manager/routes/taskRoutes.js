@@ -12,11 +12,13 @@ const {
   updateTask,
 } = require('../controllers/taskController');
 
+const validateTask = require('../middleware/validateTask');
+
 // endpoint: GET /tasks
 router.get('/tasks', getTasks);
 
 // создать задачу
-router.post('/tasks', createTask);
+router.post('/tasks', validateTask, createTask);
 
 // получить одну задачу
 router.get('/tasks/:id', getTaskById);
