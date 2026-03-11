@@ -42,15 +42,22 @@ const deleteTask = (req, res) => {
   res.json({ message: 'Task deleted successfully' });
 };
 
-const updateTask = (req, res) => {
-  const id = parseInt(req.params.id);
-  const updatedTask = taskService.updateTask(id, req.body);
+const updateTask = (req, res, next) => {
+  try {
+    const id = parseInt(req.params.id);
 
-  if (!updatedTask) {
-    return res.status(404).json({ message: 'Task not found' });
+    const updatedTask = taskService.updateTask(id, req.body);
+
+    if (!updatedTask) {
+      const error = new Error('Task not found');
+      error.statusCode = 404;
+      throw error;
+    }
+
+    res.json(updatedTask);
+  } catch (error) {
+    next(error);
   }
-
-  res.json(updatedTask);
 };
 
 // экспортируем функцию
