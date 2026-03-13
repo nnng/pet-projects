@@ -6,11 +6,10 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(express.json());
+
 const taskRoutes = require('./routes/taskRoutes');
 const errorHandler = require('./middleware/errorHandler');
-
-// middleware для работы с JSON
-app.use(express.json());
 
 // подключаем routes
 app.use(taskRoutes);

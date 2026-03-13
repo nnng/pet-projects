@@ -1,52 +1,67 @@
 const taskService = require('../services/taskService');
 
-// получения всех задач
-const getTasks = (req, res) => {
-  const tasks = taskService.getAllTasks();
+// получение всех задач
+const getTasks = async (req, res, next) => {
+  try {
+    const tasks = await taskService.getAllTasks();
 
-  res.json(tasks);
+    res.json(tasks);
+  } catch (error) {
+    next(error);
+  }
 };
 
 // получить одну задачу по id
-const getTaskById = (req, res) => {
-  const id = parseInt(req.params.id);
-
-  const task = taskService.getTaskById(id);
-
-  if (!task) {
-    return res.status(404).json({ message: 'Task not found' });
-  }
-
-  res.json(task);
-};
-
-//создание задачи
-const createTask = (req, res) => {
-  const { title } = req.body;
-
-  const newTask = taskService.createTask(title);
-
-  res.status(201).json(newTask);
-};
-
-// удаление задачи
-const deleteTask = (req, res) => {
-  const id = parseInt(req.params.id);
-
-  const deletedTask = taskService.deleteTask(id);
-
-  if (!deletedTask) {
-    return res.status(404).json({ message: 'Task not found' });
-  }
-
-  res.json({ message: 'Task deleted successfully' });
-};
-
-const updateTask = (req, res, next) => {
+const getTaskById = async (req, res, next) => {
   try {
     const id = parseInt(req.params.id);
 
-    const updatedTask = taskService.updateTask(id, req.body);
+    const task = await taskService.getTaskById(id);
+
+    if (!task) {
+      return res.status(404).json({ message: 'Task not found' });
+    }
+
+    res.json(task);
+  } catch (error) {
+    next(error);
+  }
+};
+
+// создание задачи
+const createTask = async (req, res, next) => {
+  try {
+    const newTask = await taskService.createTask(req.body);
+
+    res.status(201).json(newTask);
+  } catch (error) {
+    next(error);
+  }
+};
+
+// удаление задачи
+const deleteTask = async (req, res, next) => {
+  try {
+    const id = parseInt(req.params.id);
+
+    const deletedTask = await taskService.deleteTask(id);
+
+    if (!deletedTask) {
+      return res.status(404).json({ message: 'Task not found' });
+    }
+
+    res.json({ message: 'Task deleted successfully' });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// обновление задачи
+const updateTask = async (req, res, next) => {
+  try {
+    const id = parseInt(req.params.id);
+
+    const updatedTask = await taskService.updateTask(id, req.body);
 
     if (!updatedTask) {
       const error = new Error('Task not found');
@@ -60,7 +75,7 @@ const updateTask = (req, res, next) => {
   }
 };
 
-// экспортируем функцию
+// экспортируем функции
 module.exports = {
   getTasks,
   createTask,
