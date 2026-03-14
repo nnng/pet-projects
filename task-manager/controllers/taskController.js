@@ -4,7 +4,10 @@ const asyncHandler = require('../middleware/asyncHandler');
 // получение всех задач
 
 const getTasks = asyncHandler(async (req, res) => {
-  const tasks = await taskService.getAllTasks();
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 10;
+
+  const tasks = await taskService.getAllTasks(page, limit);
 
   res.json(tasks);
 });
