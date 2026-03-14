@@ -23,10 +23,12 @@ const createTask = async (title) => {
 // обновить задачу
 const updateTask = async (id, title, completed) => {
   const result = await pool.query(
-    `UPDATE tasks 
-     SET title = $1, completed = $2
-     WHERE id = $3
-     RETURNING *`,
+    `UPDATE tasks
+SET title = $1,
+completed = $2,
+updated_at = CURRENT_TIMESTAMP
+WHERE id = $3
+RETURNING *`,
     [title, completed, id]
   );
 
