@@ -10,9 +10,10 @@ app.use(express.json());
 
 const taskRoutes = require('./routes/taskRoutes');
 const errorHandler = require('./middleware/errorHandler');
-
-// подключаем routes
 app.use(taskRoutes);
+
+const userRoutes = require('./routes/userRoutes');
+app.use('/users', userRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
