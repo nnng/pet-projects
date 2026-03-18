@@ -1,16 +1,26 @@
 const pool = require('../config/database');
 
 // получить все задачи
-const getAllTasks = async (limit, offset, completed) => {
+const getAllTasks = async (limit, offset, completed, userId) => {
   let query = 'SELECT * FROM tasks';
   let values = [];
+  let conditions = [];
 
   if (completed !== undefined) {
-    query += ' WHERE completed = $1';
     values.push(completed);
+    conditions.push(`completed = $${values.length}`);
   }
 
-  query += ' ORDER BY id LIMIT $' + (values.length + 1) + ' OFFSET $' + (values.length + 2);
+  if (userId !== undefined) {
+    values.push(userId);
+    conditions.push(`user_id = $${values.length}`);
+  }
+
+  if (conditions.length > 0) {
+    query += ' WHERE ' + conditions.join(' AND ');
+  }
+
+  query += ` ORDER BY id LIMIT $${values.length + 1} OFFSET $${values.length + 2}`;
 
   values.push(limit, offset);
 
@@ -27,9 +37,11 @@ const getTaskById = async (id) => {
 };
 
 // создать задачу
-const createTask = async (title) => {
-  const result = await pool.query('INSERT INTO tasks (title) VALUES ($1) RETURNING *', [title]);
-
+const createTask = async (title, userId) => {
+  const result = await pool.query(
+    'INSERT INTO tasks (title, user_id) VALUES ($1, $2) RETURNING *',
+    [title, userId]
+  );
   return result.rows[0];
 };
 

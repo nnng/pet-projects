@@ -6,11 +6,11 @@ const asyncHandler = require('../middleware/asyncHandler');
 const getTasks = asyncHandler(async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 10;
-
   const completed =
     req.query.completed === 'true' ? true : req.query.completed === 'false' ? false : undefined;
+  const userId = req.query.user_id ? parseInt(req.query.user_id) : undefined;
 
-  const tasks = await taskService.getAllTasks(page, limit, completed);
+  const tasks = await taskService.getAllTasks(page, limit, completed, userId);
 
   res.json(tasks);
 });
@@ -33,6 +33,7 @@ const createTask = asyncHandler(async (req, res) => {
   const newTask = await taskService.createTask(req.body);
 
   res.status(201).json(newTask);
+  console.log(req.body);
 });
 
 // удаление задачи

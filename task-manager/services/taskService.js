@@ -1,10 +1,10 @@
 const taskModel = require('../models/taskModel');
 
 // получить все задачи
-const getAllTasks = async (page, limit, completed) => {
+const getAllTasks = async (page, limit, completed, userId) => {
   const offset = (page - 1) * limit;
 
-  return await taskModel.getAllTasks(limit, offset, completed);
+  return await taskModel.getAllTasks(limit, offset, completed, userId);
 };
 
 // получить одну задачу
@@ -14,7 +14,7 @@ const getTaskById = async (id) => {
 
 // создать задачу
 const createTask = async (data) => {
-  return await taskModel.createTask(data.title);
+  return await taskModel.createTask(data.title, data.user_id);
 };
 
 // обновить задачу
