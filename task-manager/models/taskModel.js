@@ -1,13 +1,20 @@
 const pool = require('../config/database');
 
 // получить все задачи
-const getAllTasks = async (limit, offset) => {
-  const result = await pool.query(
-    `SELECT * FROM tasks
-     ORDER BY id
-     LIMIT $1 OFFSET $2`,
-    [limit, offset]
-  );
+const getAllTasks = async (limit, offset, completed) => {
+  let query = 'SELECT * FROM tasks';
+  let values = [];
+
+  if (completed !== undefined) {
+    query += ' WHERE completed = $1';
+    values.push(completed);
+  }
+
+  query += ' ORDER BY id LIMIT $' + (values.length + 1) + ' OFFSET $' + (values.length + 2);
+
+  values.push(limit, offset);
+
+  const result = await pool.query(query, values);
 
   return result.rows;
 };

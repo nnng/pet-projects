@@ -7,7 +7,10 @@ const getTasks = asyncHandler(async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 10;
 
-  const tasks = await taskService.getAllTasks(page, limit);
+  const completed =
+    req.query.completed === 'true' ? true : req.query.completed === 'false' ? false : undefined;
+
+  const tasks = await taskService.getAllTasks(page, limit, completed);
 
   res.json(tasks);
 });
