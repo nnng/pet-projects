@@ -9,4 +9,12 @@ const register = asyncHandler(async (req, res) => {
   res.status(201).json(user);
 });
 
-module.exports = { register };
+const login = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+
+  const user = await userService.loginUser(email, password);
+
+  res.json(user);
+});
+
+module.exports = { register, login };
