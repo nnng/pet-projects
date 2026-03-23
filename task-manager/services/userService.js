@@ -12,7 +12,13 @@ const registerUser = async (email, password) => {
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);
-  return await userModel.createUser(email, hashedPassword);
+
+  const user = await userModel.createUser(email, hashedPassword);
+
+  return {
+    id: user.id,
+    email: user.email,
+  };
 };
 
 const loginUser = async (email, password) => {
