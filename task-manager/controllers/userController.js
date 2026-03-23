@@ -12,9 +12,9 @@ const register = asyncHandler(async (req, res) => {
 const login = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
-  const user = await userService.loginUser(email, password);
+  const data = await userService.loginUser(email, password);
 
-  res.json(user);
+  res.json(data);
 });
 
 module.exports = { register, login };

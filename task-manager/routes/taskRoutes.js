@@ -1,9 +1,7 @@
 const express = require('express');
 
-// создаем router
 const router = express.Router();
 
-// импортируем controller
 const {
   getTasks,
   createTask,
@@ -13,21 +11,14 @@ const {
 } = require('../controllers/taskController');
 
 const validateTask = require('../middleware/validateTask');
+const authMiddleware = require('../middleware/authMiddleware');
 
-// endpoint: GET /tasks
-router.get('/tasks', getTasks);
+router.use(authMiddleware);
 
-// создать задачу
-router.post('/tasks', validateTask, createTask);
+router.get('/', getTasks);
+router.get('/:id', getTaskById);
+router.post('/', validateTask, createTask);
+router.put('/:id', validateTask, updateTask);
+router.delete('/:id', deleteTask);
 
-// получить одну задачу
-router.get('/tasks/:id', getTaskById);
-
-// удалить задачу
-router.delete('/tasks/:id', deleteTask);
-
-// обновить задачу
-router.put('/tasks/:id', updateTask);
-
-// экспортируем router
 module.exports = router;

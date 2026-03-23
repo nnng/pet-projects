@@ -10,7 +10,8 @@ app.use(express.json());
 
 const taskRoutes = require('./routes/taskRoutes');
 const errorHandler = require('./middleware/errorHandler');
-app.use(taskRoutes);
+
+app.use('/tasks', taskRoutes);
 
 const userRoutes = require('./routes/userRoutes');
 app.use('/users', userRoutes);

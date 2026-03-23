@@ -8,23 +8,23 @@ const getAllTasks = async (page, limit, completed, userId) => {
 };
 
 // получить одну задачу
-const getTaskById = async (id) => {
-  return await taskModel.getTaskById(id);
+const getTaskById = async (id, userId) => {
+  return await taskModel.getTaskById(id, userId);
 };
 
 // создать задачу
-const createTask = async (data) => {
-  return await taskModel.createTask(data.title, data.user_id);
+const createTask = async (data, userId) => {
+  return await taskModel.createTask(data.title, userId);
 };
 
 // обновить задачу
-const updateTask = async (id, data) => {
-  return await taskModel.updateTask(id, data.title, data.completed);
+const updateTask = async (id, data, userId) => {
+  return await taskModel.updateTask(id, data.title, data.completed, userId);
 };
 
 // удалить задачу
-const deleteTask = async (id) => {
-  return await taskModel.deleteTask(id);
+const deleteTask = async (id, userId) => {
+  return await taskModel.deleteTask(id, userId);
 };
 
 module.exports = {

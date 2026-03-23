@@ -30,8 +30,11 @@ const getAllTasks = async (limit, offset, completed, userId) => {
 };
 
 // получить одну задачу
-const getTaskById = async (id) => {
-  const result = await pool.query('SELECT * FROM tasks WHERE id = $1', [id]);
+const getTaskById = async (id, userId) => {
+  const result = await pool.query('SELECT * FROM tasks WHERE id = $1 AND user_id = $2', [
+    id,
+    userId,
+  ]);
 
   return result.rows[0];
 };
@@ -46,23 +49,26 @@ const createTask = async (title, userId) => {
 };
 
 // обновить задачу
-const updateTask = async (id, title, completed) => {
+const updateTask = async (id, title, completed, UserId) => {
   const result = await pool.query(
     `UPDATE tasks
 SET title = $1,
 completed = $2,
 updated_at = CURRENT_TIMESTAMP
-WHERE id = $3
+WHERE id = $3 AND user_id = $4
 RETURNING *`,
-    [title, completed, id]
+    [title, completed, id, UserId]
   );
 
   return result.rows[0];
 };
 
 // удалить задачу
-const deleteTask = async (id) => {
-  const result = await pool.query('DELETE FROM tasks WHERE id = $1 RETURNING *', [id]);
+const deleteTask = async (id, UserId) => {
+  const result = await pool.query('DELETE FROM tasks WHERE id = $1 AND user_id = $2 RETURNING *', [
+    id,
+    UserId,
+  ]);
 
   return result.rows[0];
 };

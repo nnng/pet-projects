@@ -18,8 +18,9 @@ const getTasks = asyncHandler(async (req, res) => {
 // получить одну задачу по id
 const getTaskById = asyncHandler(async (req, res) => {
   const id = parseInt(req.params.id);
+  const userId = req.user.id;
 
-  const task = await taskService.getTaskById(id);
+  const task = await taskService.getTaskById(id, userId);
 
   if (!task) {
     return res.status(404).json({ message: 'Task not found' });
@@ -30,17 +31,19 @@ const getTaskById = asyncHandler(async (req, res) => {
 
 // создание задачи
 const createTask = asyncHandler(async (req, res) => {
-  const newTask = await taskService.createTask(req.body);
+  const userId = req.user.id;
+
+  const newTask = await taskService.createTask(req.body, userId);
 
   res.status(201).json(newTask);
-  console.log(req.body);
 });
 
 // удаление задачи
 const deleteTask = asyncHandler(async (req, res) => {
   const id = parseInt(req.params.id);
+  const userId = req.user.id;
 
-  const deletedTask = await taskService.deleteTask(id);
+  const deletedTask = await taskService.deleteTask(id, userId);
 
   if (!deletedTask) {
     return res.status(404).json({ message: 'Task not found' });
@@ -53,7 +56,8 @@ const deleteTask = asyncHandler(async (req, res) => {
 const updateTask = asyncHandler(async (req, res) => {
   const id = parseInt(req.params.id);
 
-  const updatedTask = await taskService.updateTask(id, req.body);
+  const userId = req.user.id;
+  const updatedTask = await taskService.updateTask(id, req.body, userId);
 
   if (!updatedTask) {
     return res.status(404).json({ message: 'Task not found' });
