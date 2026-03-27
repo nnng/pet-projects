@@ -49,16 +49,41 @@ const createTask = async (title, userId) => {
 };
 
 // обновить задачу
-const updateTask = async (id, title, completed, UserId) => {
-  const result = await pool.query(
-    `UPDATE tasks
-SET title = $1,
-completed = $2,
-updated_at = CURRENT_TIMESTAMP
-WHERE id = $3 AND user_id = $4
-RETURNING *`,
-    [title, completed, id, UserId]
-  );
+const updateTask = async (id, data, UserId) => {
+  const updates = [];
+  const values = [];
+  let paramCount = 1;
+
+  // проверяем какие поля обновляем
+  if (data.title !== undefined) {
+    updates.push(`title = $${paramCount}`);
+    values.push(data.title);
+    paramCount++;
+  }
+
+  if (data.completed !== undefined) {
+    updates.push(`completed = $${paramCount}`);
+    values.push(data.completed);
+    paramCount++;
+  }
+
+  // если ничего не передано для обновления
+  if (updates.length === 0) {
+    return null;
+  }
+
+  // добавляем updated_at в конец
+  updates.push(`updated_at = CURRENT_TIMESTAMP`);
+
+  // добавляем id и UserId в конец
+  values.push(id, UserId);
+
+  const query = `UPDATE tasks
+SET ${updates.join(', ')}
+WHERE id = $${paramCount} AND user_id = $${paramCount + 1}
+RETURNING *`;
+
+  const result = await pool.query(query, values);
 
   return result.rows[0];
 };

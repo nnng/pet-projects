@@ -19,7 +19,7 @@ const createTask = async (data, userId) => {
 
 // обновить задачу
 const updateTask = async (id, data, userId) => {
-  return await taskModel.updateTask(id, data.title, data.completed, userId);
+  return await taskModel.updateTask(id, data, userId);
 };
 
 // удалить задачу
