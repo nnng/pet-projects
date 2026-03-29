@@ -11,6 +11,15 @@ app.use(express.json());
 const taskRoutes = require('./routes/taskRoutes');
 const errorHandler = require('./middleware/errorHandler');
 
+const cors = require('cors');
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true, // Разрешить cookies
+  optionsSuccessStatus: 200, // Для старых браузеров
+};
+
+app.use(cors(corsOptions));
+
 app.use('/tasks', taskRoutes);
 
 const userRoutes = require('./routes/userRoutes');
