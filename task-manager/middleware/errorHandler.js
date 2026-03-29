@@ -3,7 +3,7 @@ const AppError = require('../utils/AppError');
 const errorHandler = (err, req, res, next) => {
   console.error(err);
 
-  // Если это наша AppError - значит ошибка валидная (operational error)
+  // ошибки AppError
   if (err instanceof AppError) {
     return res.status(err.statusCode).json({
       status: 'error',
@@ -12,7 +12,7 @@ const errorHandler = (err, req, res, next) => {
     });
   }
 
-  // Для всех остальных ошибок - возвращаем 500
+  // Все остальные
   res.status(500).json({
     status: 'error',
     statusCode: 500,
