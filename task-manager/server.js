@@ -6,6 +6,10 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// SECURITY HEADERS
+const helmet = require('helmet');
+app.use(helmet());
+
 const morgan = require('morgan');
 
 // MORGAN LOGGER
