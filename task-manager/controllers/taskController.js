@@ -1,5 +1,6 @@
 const taskService = require('../services/taskService');
 const asyncHandler = require('../middleware/asyncHandler');
+const AppError = require('../utils/AppError');
 
 // получение всех задач
 
@@ -23,7 +24,7 @@ const getTaskById = asyncHandler(async (req, res) => {
   const task = await taskService.getTaskById(id, userId);
 
   if (!task) {
-    return res.status(404).json({ message: 'Task not found' });
+    throw new AppError('Task not found', 404);
   }
 
   res.json(task);
@@ -46,7 +47,7 @@ const deleteTask = asyncHandler(async (req, res) => {
   const deletedTask = await taskService.deleteTask(id, userId);
 
   if (!deletedTask) {
-    return res.status(404).json({ message: 'Task not found' });
+    throw new AppError('Task not found', 404);
   }
 
   res.json({ message: 'Task deleted successfully' });
@@ -60,7 +61,7 @@ const updateTask = asyncHandler(async (req, res) => {
   const updatedTask = await taskService.updateTask(id, req.body, userId);
 
   if (!updatedTask) {
-    return res.status(404).json({ message: 'Task not found' });
+    throw new AppError('Task not found', 404);
   }
 
   res.json(updatedTask);

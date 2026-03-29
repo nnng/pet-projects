@@ -1,10 +1,22 @@
+const AppError = require('../utils/AppError');
+
 const errorHandler = (err, req, res, next) => {
   console.error(err);
 
-  const statusCode = err.statusCode || 500;
+  // Если это наша AppError - значит ошибка валидная (operational error)
+  if (err instanceof AppError) {
+    return res.status(err.statusCode).json({
+      status: 'error',
+      statusCode: err.statusCode,
+      message: err.message,
+    });
+  }
 
-  res.status(statusCode).json({
-    message: err.message || 'Internal Server Error',
+  // Для всех остальных ошибок - возвращаем 500
+  res.status(500).json({
+    status: 'error',
+    statusCode: 500,
+    message: 'Internal Server Error',
   });
 };
 

@@ -1,20 +1,26 @@
 const userService = require('../services/userService');
 const asyncHandler = require('../middleware/asyncHandler');
+const AppError = require('../utils/AppError');
 
-const register = asyncHandler(async (req, res) => {
+// регистрация пользователя
+const registerUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
-  const user = await userService.registerUser(email, password);
+  const newUser = await userService.registerUser(email, password);
 
-  res.status(201).json(user);
+  res.status(201).json(newUser);
 });
 
-const login = asyncHandler(async (req, res) => {
+// вход пользователя
+const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
-  const data = await userService.loginUser(email, password);
+  const result = await userService.loginUser(email, password);
 
-  res.json(data);
+  res.json(result);
 });
 
-module.exports = { register, login };
+module.exports = {
+  registerUser,
+  loginUser,
+};

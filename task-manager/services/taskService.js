@@ -24,6 +24,7 @@ const updateTask = async (id, data, userId) => {
 
 // удалить задачу
 const deleteTask = async (id, userId) => {
+  ц;
   return await taskModel.deleteTask(id, userId);
 };
 
