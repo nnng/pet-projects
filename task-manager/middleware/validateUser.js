@@ -14,6 +14,12 @@ const validateUser = (req, res, next) => {
     });
   }
 
+  if (email.trim() === '') {
+    return res.status(400).json({
+      message: 'Email cannot be empty',
+    });
+  }
+
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     return res.status(400).json({
@@ -34,9 +40,21 @@ const validateUser = (req, res, next) => {
     });
   }
 
+  if (password.trim() === '') {
+    return res.status(400).json({
+      message: 'Password cannot be empty',
+    });
+  }
+
   if (password.length < 6) {
     return res.status(400).json({
       message: 'Password must be at least 6 characters',
+    });
+  }
+
+  if (password.length > 50) {
+    return res.status(400).json({
+      message: 'Password must be no more than 50 characters',
     });
   }
 
