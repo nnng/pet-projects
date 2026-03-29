@@ -6,6 +6,12 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const morgan = require('morgan');
+
+// MORGAN LOGGER
+const morganFormat = ':method :url :status :response-time ms';
+app.use(morgan(morganFormat));
+
 app.use(express.json());
 
 const taskRoutes = require('./routes/taskRoutes');
