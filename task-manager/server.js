@@ -30,6 +30,11 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+// ============ SWAGGER DOCS ============
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./config/swagger');
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 app.use('/tasks', taskRoutes);
 
 const userRoutes = require('./routes/userRoutes');
