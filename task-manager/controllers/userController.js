@@ -1,6 +1,5 @@
 const userService = require('../services/userService');
 const asyncHandler = require('../middleware/asyncHandler');
-const AppError = require('../utils/AppError');
 
 // регистрация пользователя
 const registerUser = asyncHandler(async (req, res) => {

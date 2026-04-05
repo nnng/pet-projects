@@ -30,18 +30,18 @@ describe('taskController', () => {
 
       await taskController.getTasks(req, res, next);
 
-      expect(taskService.getAllTasks).toHaveBeenCalledWith(1, 10, undefined, undefined);
+      expect(taskService.getAllTasks).toHaveBeenCalledWith(1, 10, undefined, 1);
       expect(res.json).toHaveBeenCalledWith(mockTasks);
     });
 
-    test('should pass parsed query params to service', async () => {
+    test('should ignore user_id query and use authenticated user id', async () => {
       req.query = { page: '2', limit: '5', completed: 'true', user_id: '3' };
       const mockTasks = [];
       taskService.getAllTasks.mockResolvedValue(mockTasks);
 
       await taskController.getTasks(req, res, next);
 
-      expect(taskService.getAllTasks).toHaveBeenCalledWith(2, 5, true, 3);
+      expect(taskService.getAllTasks).toHaveBeenCalledWith(2, 5, true, 1);
     });
 
     test('should call next() with error if service throws', async () => {
@@ -73,6 +73,16 @@ describe('taskController', () => {
 
       expect(next).toHaveBeenCalledWith(expect.any(AppError));
       expect(next.mock.calls[0][0].statusCode).toBe(404);
+    });
+
+    test('should call next() with AppError 400 if task id is invalid', async () => {
+      req.params.id = 'abc';
+
+      await taskController.getTaskById(req, res, next);
+
+      expect(next).toHaveBeenCalledWith(expect.any(AppError));
+      expect(next.mock.calls[0][0].statusCode).toBe(400);
+      expect(next.mock.calls[0][0].message).toBe('Invalid task ID');
     });
   });
 
@@ -118,6 +128,16 @@ describe('taskController', () => {
       expect(next).toHaveBeenCalledWith(expect.any(AppError));
       expect(next.mock.calls[0][0].statusCode).toBe(404);
     });
+
+    test('should call next() with AppError 400 if task id is invalid', async () => {
+      req.params.id = 'not-number';
+
+      await taskController.deleteTask(req, res, next);
+
+      expect(next).toHaveBeenCalledWith(expect.any(AppError));
+      expect(next.mock.calls[0][0].statusCode).toBe(400);
+      expect(next.mock.calls[0][0].message).toBe('Invalid task ID');
+    });
   });
 
   describe('updateTask', () => {
@@ -141,6 +161,16 @@ describe('taskController', () => {
 
       expect(next).toHaveBeenCalledWith(expect.any(AppError));
       expect(next.mock.calls[0][0].statusCode).toBe(404);
+    });
+
+    test('should call next() with AppError 400 if task id is invalid', async () => {
+      req.params.id = '-1';
+
+      await taskController.updateTask(req, res, next);
+
+      expect(next).toHaveBeenCalledWith(expect.any(AppError));
+      expect(next.mock.calls[0][0].statusCode).toBe(400);
+      expect(next.mock.calls[0][0].message).toBe('Invalid task ID');
     });
   });
 });

@@ -1,61 +1,50 @@
 const validateUser = (req, res, next) => {
   const { email, password } = req.body;
 
+  const sendValidationError = (message) =>
+    res.status(400).json({
+      status: 'error',
+      statusCode: 400,
+      message,
+    });
+
   // ВАЛИДАЦИЯ EMAIL
   if (!email) {
-    return res.status(400).json({
-      message: 'Email is required',
-    });
+    return sendValidationError('Email is required');
   }
 
   if (typeof email !== 'string') {
-    return res.status(400).json({
-      message: 'Email must be a string',
-    });
+    return sendValidationError('Email must be a string');
   }
 
   if (email.trim() === '') {
-    return res.status(400).json({
-      message: 'Email cannot be empty',
-    });
+    return sendValidationError('Email cannot be empty');
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
-    return res.status(400).json({
-      message: 'Email format is invalid',
-    });
+    return sendValidationError('Email format is invalid');
   }
 
   // ВАЛИДАЦИЯ PASSWORD
   if (!password) {
-    return res.status(400).json({
-      message: 'Password is required',
-    });
+    return sendValidationError('Password is required');
   }
 
   if (typeof password !== 'string') {
-    return res.status(400).json({
-      message: 'Password must be a string',
-    });
+    return sendValidationError('Password must be a string');
   }
 
   if (password.trim() === '') {
-    return res.status(400).json({
-      message: 'Password cannot be empty',
-    });
+    return sendValidationError('Password cannot be empty');
   }
 
   if (password.length < 6) {
-    return res.status(400).json({
-      message: 'Password must be at least 6 characters',
-    });
+    return sendValidationError('Password must be at least 6 characters');
   }
 
   if (password.length > 50) {
-    return res.status(400).json({
-      message: 'Password must be no more than 50 characters',
-    });
+    return sendValidationError('Password must be no more than 50 characters');
   }
 
   next();

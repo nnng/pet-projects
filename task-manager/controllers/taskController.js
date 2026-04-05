@@ -2,6 +2,16 @@ const taskService = require('../services/taskService');
 const asyncHandler = require('../middleware/asyncHandler');
 const AppError = require('../utils/AppError');
 
+const parseTaskId = (idParam) => {
+  const id = Number.parseInt(idParam, 10);
+
+  if (!Number.isInteger(id) || id <= 0) {
+    throw new AppError('Invalid task ID', 400);
+  }
+
+  return id;
+};
+
 // получение всех задач
 
 const getTasks = asyncHandler(async (req, res) => {
@@ -9,7 +19,7 @@ const getTasks = asyncHandler(async (req, res) => {
   const limit = parseInt(req.query.limit) || 10;
   const completed =
     req.query.completed === 'true' ? true : req.query.completed === 'false' ? false : undefined;
-  const userId = req.query.user_id ? parseInt(req.query.user_id) : undefined;
+  const userId = req.user.id;
 
   const tasks = await taskService.getAllTasks(page, limit, completed, userId);
 
@@ -18,7 +28,7 @@ const getTasks = asyncHandler(async (req, res) => {
 
 // получить одну задачу по id
 const getTaskById = asyncHandler(async (req, res) => {
-  const id = parseInt(req.params.id);
+  const id = parseTaskId(req.params.id);
   const userId = req.user.id;
 
   const task = await taskService.getTaskById(id, userId);
@@ -41,7 +51,7 @@ const createTask = asyncHandler(async (req, res) => {
 
 // удаление задачи
 const deleteTask = asyncHandler(async (req, res) => {
-  const id = parseInt(req.params.id);
+  const id = parseTaskId(req.params.id);
   const userId = req.user.id;
 
   const deletedTask = await taskService.deleteTask(id, userId);
@@ -55,7 +65,7 @@ const deleteTask = asyncHandler(async (req, res) => {
 
 // обновление задачи
 const updateTask = asyncHandler(async (req, res) => {
-  const id = parseInt(req.params.id);
+  const id = parseTaskId(req.params.id);
 
   const userId = req.user.id;
   const updatedTask = await taskService.updateTask(id, req.body, userId);

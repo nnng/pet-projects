@@ -20,6 +20,8 @@ describe('validateUser middleware', () => {
 
       expect(res.status).toHaveBeenCalledWith(400);
       expect(res.json).toHaveBeenCalledWith({
+        status: 'error',
+        statusCode: 400,
         message: 'Email is required',
       });
     });
@@ -31,6 +33,8 @@ describe('validateUser middleware', () => {
 
       expect(res.status).toHaveBeenCalledWith(400);
       expect(res.json).toHaveBeenCalledWith({
+        status: 'error',
+        statusCode: 400,
         message: 'Email must be a string',
       });
     });
@@ -42,6 +46,8 @@ describe('validateUser middleware', () => {
 
       expect(res.status).toHaveBeenCalledWith(400);
       expect(res.json).toHaveBeenCalledWith({
+        status: 'error',
+        statusCode: 400,
         message: 'Email cannot be empty',
       });
     });
@@ -53,6 +59,8 @@ describe('validateUser middleware', () => {
 
       expect(res.status).toHaveBeenCalledWith(400);
       expect(res.json).toHaveBeenCalledWith({
+        status: 'error',
+        statusCode: 400,
         message: 'Email format is invalid',
       });
     });
@@ -66,6 +74,8 @@ describe('validateUser middleware', () => {
 
       expect(res.status).toHaveBeenCalledWith(400);
       expect(res.json).toHaveBeenCalledWith({
+        status: 'error',
+        statusCode: 400,
         message: 'Password is required',
       });
     });
@@ -77,6 +87,8 @@ describe('validateUser middleware', () => {
 
       expect(res.status).toHaveBeenCalledWith(400);
       expect(res.json).toHaveBeenCalledWith({
+        status: 'error',
+        statusCode: 400,
         message: 'Password must be a string',
       });
     });
@@ -88,6 +100,8 @@ describe('validateUser middleware', () => {
 
       expect(res.status).toHaveBeenCalledWith(400);
       expect(res.json).toHaveBeenCalledWith({
+        status: 'error',
+        statusCode: 400,
         message: 'Password cannot be empty',
       });
     });
@@ -99,6 +113,8 @@ describe('validateUser middleware', () => {
 
       expect(res.status).toHaveBeenCalledWith(400);
       expect(res.json).toHaveBeenCalledWith({
+        status: 'error',
+        statusCode: 400,
         message: 'Password must be at least 6 characters',
       });
     });
@@ -110,6 +126,8 @@ describe('validateUser middleware', () => {
 
       expect(res.status).toHaveBeenCalledWith(400);
       expect(res.json).toHaveBeenCalledWith({
+        status: 'error',
+        statusCode: 400,
         message: 'Password must be no more than 50 characters',
       });
     });

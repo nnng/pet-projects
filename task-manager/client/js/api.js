@@ -25,15 +25,23 @@ async function request(method, path, body = null, requiresAuth = true) {
     options.body = JSON.stringify(body);
   }
 
-  const response = await fetch(`${BASE_URL}${path}`, options);
-  const data = await response.json();
+  try {
+    const response = await fetch(`${BASE_URL}${path}`, options);
+    const data = await response.json();
 
-  if (!response.ok) {
-    // data.message — возвращает errorHandler и validateTask/validateUser
-    throw new Error(data.message || 'Something went wrong');
+    if (!response.ok) {
+      // data.message — возвращает errorHandler и validateTask/validateUser
+      throw new Error(data.message || 'Something went wrong');
+    }
+
+    return data;
+  } catch (error) {
+    if (error instanceof TypeError) {
+      throw new Error('Unable to connect to server. Please check your connection.');
+    }
+
+    throw error;
   }
-
-  return data;
 }
 
 // ─── AUTH ─────────────────────────────────────────────────────────────────────
