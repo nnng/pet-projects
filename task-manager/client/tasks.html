@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <main class="tasks-page">
+      <section class="tasks-shell">
+        <header class="tasks-header">
+          <div>
+            <p class="auth-card__eyebrow">Task Manager</p>
+            <h1>Your workspace</h1>
+            <p id="user-info" class="tasks-header__meta"></p>
+          </div>
+
+          <button id="logout-btn" class="secondary-button" type="button">Logout</button>
+        </header>
+
+        <section class="tasks-placeholder">
+          <h2>Tasks page is ready</h2>
+          <p>
+            Authentication already works. The next step will be loading tasks from the backend and
+            rendering them here.
+          </p>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="./js/tasks.js"></script>
+  </body>
+</html>

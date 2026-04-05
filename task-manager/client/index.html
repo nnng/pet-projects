@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager Auth</title>
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <main class="auth-page">
+      <section class="auth-card">
+        <div class="auth-card__header">
+          <p class="auth-card__eyebrow">Task Manager</p>
+          <h1 id="auth-title">Welcome back</h1>
+          <p id="auth-subtitle">Log in to manage your tasks.</p>
+        </div>
+
+        <div class="auth-switcher">
+          <button
+            id="show-login-btn"
+            class="auth-switcher__button auth-switcher__button--active"
+            type="button"
+          >
+            Login
+          </button>
+          <button id="show-register-btn" class="auth-switcher__button" type="button">
+            Register
+          </button>
+        </div>
+
+        <form id="auth-form" class="auth-form">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="user@example.com"
+              autocomplete="email"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="At least 6 characters"
+              autocomplete="current-password"
+              required
+            />
+          </div>
+
+          <button id="submit-btn" class="primary-button" type="submit">Login</button>
+
+          <p id="form-message" class="form-message" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <script type="module" src="./js/auth.js"></script>
+  </body>
+</html>

@@ -22,7 +22,7 @@ const updateTask = async (id, data, userId) => {
   return await taskModel.updateTask(id, data, userId);
 };
 
-// удалить задачу
+// удалить зад  ачу
 const deleteTask = async (id, userId) => {
   return await taskModel.deleteTask(id, userId);
 };
