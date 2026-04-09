@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <main class="tasks-page">
+      <section class="tasks-shell">
+        <header class="tasks-header">
+          <div>
+            <p class="auth-card__eyebrow">Task Manager</p>
+            <h1>Your workspace</h1>
+            <p id="user-info" class="tasks-header__meta"></p>
+          </div>
+
+          <button id="logout-btn" class="secondary-button" type="button">Logout</button>
+        </header>
+
+        <section class="task-controls">
+          <form id="create-task-form" class="create-task-form">
+            <input
+              id="new-task-title"
+              type="text"
+              placeholder="What needs to be done?"
+              maxlength="120"
+              required
+            />
+            <button class="primary-button" type="submit">Add Task</button>
+          </form>
+
+          <div class="task-toolbar">
+            <label for="task-filter">Filter:</label>
+            <select id="task-filter">
+              <option value="all">All</option>
+              <option value="active">Active</option>
+              <option value="completed">Completed</option>
+            </select>
+
+            <button id="refresh-btn" class="secondary-button" type="button">Refresh</button>
+          </div>
+        </section>
+
+        <p id="tasks-message" class="form-message" aria-live="polite"></p>
+
+        <ul id="tasks-list" class="tasks-list"></ul>
+
+        <section id="empty-state" class="tasks-placeholder" hidden>
+          <h2>No tasks yet</h2>
+          <p>Create your first task using the form above.</p>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="./js/tasks.js"></script>
+  </body>
+</html>
