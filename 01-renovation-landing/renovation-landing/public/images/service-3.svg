@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Smart home abstract preview">
+  <rect width="800" height="600" fill="#f5f3ef"/>
+  <rect x="70" y="70" width="660" height="460" rx="30" fill="#e8ded5"/>
+  <circle cx="260" cy="250" r="120" fill="#c6a98b"/>
+  <circle cx="520" cy="250" r="120" fill="#b79d84"/>
+  <rect x="220" y="385" width="360" height="70" rx="35" fill="#1c1c1c" opacity="0.14"/>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Interior design abstract preview">
+  <rect width="800" height="600" fill="#f5f3ef"/>
+  <rect x="50" y="50" width="700" height="500" rx="24" fill="#ebe3db"/>
+  <rect x="110" y="110" width="250" height="350" rx="20" fill="#c6a98b"/>
+  <rect x="390" y="110" width="300" height="170" rx="20" fill="#d6cbc0"/>
+  <rect x="390" y="300" width="300" height="160" rx="20" fill="#9d8065"/>
+</svg>

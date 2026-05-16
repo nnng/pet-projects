@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Space planning abstract preview">
+  <rect width="800" height="600" fill="#f5f3ef"/>
+  <rect x="60" y="60" width="680" height="480" rx="30" fill="#f8f6f2" stroke="rgba(28,28,28,0.1)"/>
+  <path d="M120 140H680" stroke="#1c1c1c" stroke-opacity="0.15" stroke-width="10"/>
+  <path d="M120 240H560" stroke="#c6a98b" stroke-width="16" stroke-linecap="round"/>
+  <path d="M120 340H640" stroke="#b79d84" stroke-width="16" stroke-linecap="round"/>
+  <path d="M120 440H500" stroke="#1c1c1c" stroke-opacity="0.18" stroke-width="10"/>
+</svg>

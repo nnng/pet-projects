@@ -1,0 +1,229 @@
+// ==================== COLORS ====================
+$color-primary-bg: #f5f3ef;
+$color-secondary-bg: #ece7e1;
+$color-primary-text: #1c1c1c;
+$color-secondary-text: #6f6a64;
+$color-accent: #c6a98b;
+$color-white: #ffffff;
+$color-dark: #1c1c1c;
+$color-darker: #151515;
+$color-border: rgba(28, 28, 28, 0.08);
+$color-border-subtle: rgba(0, 0, 0, 0.06);
+$color-border-light: rgba(0, 0, 0, 0.1);
+
+// ==================== TYPOGRAPHY ====================
+$font-heading: 'Neue Montreal', 'General Sans', sans-serif;
+$font-body: 'Inter', sans-serif;
+
+$weight-regular: 400;
+$weight-medium: 500;
+$weight-semibold: 600;
+
+// ==================== LAYOUT ====================
+$container-max-width: 1440px;
+$container-padding-desktop: 80px;
+$container-padding-mobile: 24px;
+$container-padding-tablet: 48px;
+
+// ==================== SPACING ====================
+$spacing-unit: 16px;
+$gap-navigation: 48px;
+$gap-section: 120px;
+
+// ==================== ANIMATIONS ====================
+$animation-duration-short: 0.6s;
+$animation-duration-medium: 0.8s;
+$animation-duration-long: 1.2s;
+$animation-duration-xl: 1.4s;
+$animation-easing: cubic-bezier(0.22, 1, 0.36, 1);
+$animation-easing-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+// ==================== BREAKPOINTS ====================
+$bp-mobile: 480px;
+$bp-tablet: 768px;
+$bp-desktop: 1024px;
+$bp-large: 1440px;
+
+// ==================== MIXINS ====================
+@mixin container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding-desktop;
+
+  @media (max-width: $bp-desktop) {
+    padding: 0 $container-padding-tablet;
+  }
+
+  @media (max-width: $bp-tablet) {
+    padding: 0 $container-padding-mobile;
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin smooth-animation {
+  transition: all $animation-duration-medium $animation-easing;
+}
+
+@mixin heading-large {
+  font-family: $font-heading;
+  font-size: 96px;
+  font-weight: $weight-semibold;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+
+  @media (max-width: $bp-tablet) {
+    font-size: 56px;
+  }
+
+  @media (max-width: $bp-mobile) {
+    font-size: 36px;
+  }
+}
+
+@mixin heading-medium {
+  font-family: $font-heading;
+  font-size: 72px;
+  font-weight: $weight-semibold;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+
+  @media (max-width: $bp-tablet) {
+    font-size: 48px;
+  }
+
+  @media (max-width: $bp-mobile) {
+    font-size: 28px;
+  }
+}
+
+@mixin heading-small {
+  font-family: $font-heading;
+  font-size: 48px;
+  font-weight: $weight-semibold;
+  line-height: 1.2;
+
+  @media (max-width: $bp-tablet) {
+    font-size: 32px;
+  }
+
+  @media (max-width: $bp-mobile) {
+    font-size: 24px;
+  }
+}
+
+@mixin body-text {
+  font-family: $font-body;
+  font-size: 18px;
+  font-weight: $weight-regular;
+  line-height: 1.8;
+}
+
+@mixin body-text-small {
+  font-family: $font-body;
+  font-size: 16px;
+  font-weight: $weight-regular;
+  line-height: 1.6;
+}
+
+@mixin label-text {
+  font-size: 12px;
+  font-weight: $weight-medium;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+@mixin button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 48px;
+  background-color: $color-dark;
+  color: $color-white;
+  font-family: $font-body;
+  font-size: 16px;
+  font-weight: $weight-medium;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 2px;
+  @include smooth-animation;
+
+  &:hover {
+    background-color: #2b2b2b;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@mixin button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 48px;
+  background-color: transparent;
+  color: $color-dark;
+  font-family: $font-body;
+  font-size: 16px;
+  font-weight: $weight-medium;
+  border: 1px solid $color-border-light;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 2px;
+  @include smooth-animation;
+
+  &:hover {
+    background-color: rgba(28, 28, 28, 0.02);
+    border-color: $color-dark;
+  }
+}
+
+// ==================== UTILITIES ====================
+.blur-bg {
+  backdrop-filter: blur(16px);
+}
+
+.grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.03;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+}

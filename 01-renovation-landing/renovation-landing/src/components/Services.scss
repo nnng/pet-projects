@@ -1,0 +1,139 @@
+@import '../styles/variables.scss';
+
+.services {
+  min-height: 1000px;
+  padding: 120px 0;
+  background-color: $color-primary-bg;
+
+  &__container {
+    @include container;
+  }
+
+  &__header {
+    margin-bottom: 80px;
+
+    @media (max-width: $bp-tablet) {
+      margin-bottom: 60px;
+    }
+  }
+
+  &__label {
+    @include label-text;
+    color: $color-secondary-text;
+    display: block;
+    margin-bottom: 24px;
+  }
+
+  &__heading {
+    @include heading-medium;
+    color: $color-primary-text;
+    max-width: 800px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: 80px minmax(0, 1.2fr) minmax(260px, 0.9fr) 250px;
+    gap: 36px;
+    align-items: center;
+    padding: 40px 0;
+    border-bottom: 1px solid $color-border;
+    position: relative;
+    min-height: 160px;
+    @include smooth-animation;
+
+    @media (max-width: $bp-tablet) {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 32px 0;
+      min-height: auto;
+    }
+
+    &:hover {
+      .services__number {
+        opacity: 0.5;
+      }
+
+      .services__image-wrapper {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    &.active {
+      .services__image-wrapper {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  }
+
+  &__number {
+    font-family: $font-heading;
+    font-size: 64px;
+    font-weight: $weight-semibold;
+    color: $color-primary-text;
+    opacity: 0.2;
+    transition: opacity $animation-duration-medium $animation-easing;
+    line-height: 1;
+
+    @media (max-width: $bp-tablet) {
+      font-size: 48px;
+    }
+  }
+
+  &__title {
+    @include heading-small;
+    color: $color-primary-text;
+    min-width: 0;
+
+    @media (max-width: $bp-tablet) {
+      font-size: 24px;
+    }
+  }
+
+  &__description {
+    font-size: 15px;
+    color: $color-secondary-text;
+    line-height: 1.6;
+    max-width: 320px;
+    min-width: 0;
+    transition: color $animation-duration-medium $animation-easing;
+
+    @media (max-width: $bp-tablet) {
+      max-width: none;
+    }
+  }
+
+  &__image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateX(20px);
+    transition:
+      opacity $animation-duration-medium $animation-easing,
+      transform $animation-duration-medium $animation-easing;
+    pointer-events: none;
+
+    @media (max-width: $bp-tablet) {
+      opacity: 1;
+      transform: none;
+      width: 100%;
+      height: 300px;
+      margin-top: 20px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

@@ -1,0 +1,119 @@
+@import '../styles/variables.scss';
+
+.cta {
+  min-height: 90vh;
+  background-color: $color-dark;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: $bp-tablet) {
+    min-height: 70vh;
+  }
+}
+
+.cta__noise {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.5;
+}
+
+.cta__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 200px 200px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.3;
+}
+
+.cta__container {
+  @include container;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  text-align: center;
+  padding: 80px 0;
+
+  @media (max-width: $bp-tablet) {
+    gap: 32px;
+    padding: 60px 0;
+  }
+}
+
+.cta__heading {
+  font-size: 110px;
+  font-family: $font-heading;
+  font-weight: $weight-semibold;
+  color: $color-white;
+  line-height: 0.95;
+  max-width: 1000px;
+  word-break: break-word;
+
+  @media (max-width: $bp-tablet) {
+    font-size: 48px;
+    line-height: 1.1;
+  }
+
+  @media (max-width: $bp-mobile) {
+    font-size: 32px;
+  }
+}
+
+.cta__description {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: $weight-regular;
+  max-width: 600px;
+
+  @media (max-width: $bp-tablet) {
+    font-size: 16px;
+  }
+}
+
+.cta__button {
+  padding: 24px 72px;
+  background-color: $color-white;
+  color: $color-dark;
+  font-family: $font-body;
+  font-size: 16px;
+  font-weight: $weight-semibold;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  @include smooth-animation;
+  margin-top: 24px;
+
+  &:hover {
+    background-color: $color-accent;
+    color: $color-white;
+    transform: translateY(-4px);
+  }
+
+  &:active {
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: $bp-tablet) {
+    padding: 18px 48px;
+    font-size: 14px;
+  }
+}

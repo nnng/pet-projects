@@ -1,0 +1,106 @@
+@import '../styles/variables.scss';
+
+.footer {
+  background-color: $color-darker;
+  color: $color-primary-bg;
+  padding: 80px 0 40px;
+
+  @media (max-width: $bp-tablet) {
+    padding: 60px 0 30px;
+  }
+}
+
+.footer__container {
+  @include container;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 60px;
+  margin-bottom: 60px;
+
+  @media (max-width: $bp-tablet) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+
+  @media (max-width: $bp-mobile) {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+.footer__column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer__logo {
+  font-family: $font-heading;
+  font-size: 16px;
+  font-weight: $weight-semibold;
+  letter-spacing: 0.1em;
+  color: $color-primary-bg;
+  line-height: 1;
+}
+
+.footer__description {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+
+.footer__title {
+  font-family: $font-heading;
+  font-size: 14px;
+  font-weight: $weight-semibold;
+  color: $color-primary-bg;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footer__links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  a,
+  p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color $animation-duration-medium $animation-easing;
+
+    &:hover {
+      color: $color-primary-bg;
+    }
+  }
+
+  p {
+    cursor: default;
+  }
+}
+
+.footer__bottom {
+  @include container;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+
+  @media (max-width: $bp-tablet) {
+    padding-top: 30px;
+  }
+}
+
+.footer__copyright {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.6;
+}
+
+.footer__disclaimer {
+  margin-top: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.48);
+}
