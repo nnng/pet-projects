@@ -1,0 +1,184 @@
+@use '../../styles/variables' as *;
+
+// ======= SOCIAL PROOF SECTION =======
+.social-section {
+  padding: $space-4xl 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.01), transparent),
+    radial-gradient(400px 300px at 50% 50%, rgba(0, 217, 255, 0.03), transparent);
+  border-top: $border-thin solid rgba(0, 217, 255, 0.06);
+  border-bottom: $border-thin solid rgba(123, 97, 255, 0.06);
+  animation: slideInUp 0.8s $ease-smooth;
+}
+
+.social-section h2 {
+  text-align: center;
+  margin-bottom: $space-2xl;
+  font-family: $font-display;
+  font-size: $fs-2xl;
+  font-weight: $fw-bold;
+  color: $text-secondary;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all $duration-base $ease-smooth;
+
+  &:hover {
+    color: $accent-cyan;
+  }
+}
+
+// ======= LOGOS GRID =======
+.logos {
+  display: flex;
+  gap: $space-2xl;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: $space-3xl;
+}
+
+.logo-item {
+  padding: $space-lg $space-2xl;
+  border-radius: $radius-lg;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(0, 217, 255, 0.02));
+  border: $border-thin solid rgba(0, 217, 255, 0.08);
+  backdrop-filter: blur(8px);
+  transition: all $duration-base $ease-smooth;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.08), rgba(123, 97, 255, 0.06));
+    border-color: rgba(0, 217, 255, 0.24);
+    box-shadow:
+      0 8px 24px rgba(0, 217, 255, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    transform: translateY(-2px);
+  }
+
+  img {
+    filter: grayscale(100%) brightness(0.8);
+    transition: filter $duration-base $ease-smooth;
+  }
+
+  &:hover img {
+    filter: grayscale(0%) brightness(1);
+  }
+}
+
+// ======= REVIEWS SECTION =======
+.reviews {
+  display: flex;
+  gap: $space-xl;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: $space-3xl;
+}
+
+.review {
+  padding: $space-2xl;
+  max-width: 360px;
+  border-radius: $radius-lg;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(123, 97, 255, 0.02));
+  border: $border-thin solid rgba(123, 97, 255, 0.12);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    $shadow-sm;
+  transition: all $duration-base $ease-smooth;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(0, 217, 255, 0.08), transparent);
+    border-radius: 50%;
+    pointer-events: none;
+    transition: all $duration-slow $ease-smooth;
+  }
+
+  &:hover {
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.06), rgba(123, 97, 255, 0.06));
+    border-color: rgba(0, 217, 255, 0.24);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 8px 24px rgba(0, 217, 255, 0.12);
+    transform: translateY(-4px);
+
+    &::before {
+      top: 30%;
+      right: 10%;
+    }
+  }
+
+  p {
+    color: $text-main;
+    margin-bottom: $space-lg;
+    line-height: $lh-relaxed;
+    font-size: $fs-base;
+  }
+
+  .reviewer {
+    display: flex;
+    align-items: center;
+    gap: $space-md;
+    margin-top: $space-lg;
+    padding-top: $space-lg;
+    border-top: $border-thin solid rgba(255, 255, 255, 0.06);
+  }
+
+  .reviewer-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: $gradient-neon;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $fs-sm;
+    font-weight: $fw-bold;
+    color: #071123;
+  }
+
+  .reviewer-info {
+    flex: 1;
+  }
+
+  .reviewer-name {
+    font-weight: $fw-semibold;
+    color: $text-main;
+    font-size: $fs-sm;
+    display: block;
+  }
+
+  .reviewer-title {
+    font-size: $fs-xs;
+    color: $text-tertiary;
+    display: block;
+  }
+
+  .reviewer-rating {
+    display: flex;
+    gap: 2px;
+    font-size: 12px;
+    color: $accent-cyan;
+  }
+}
+
+// ======= ANIMATIONS =======
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

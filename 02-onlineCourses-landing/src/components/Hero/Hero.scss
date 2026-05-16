@@ -1,0 +1,278 @@
+@use '../../styles/variables' as *;
+
+// ======= HERO SECTION =======
+.hero-section {
+  padding: $space-5xl 0;
+  background:
+    radial-gradient(800px 400px at 80% 20%, rgba(123, 97, 255, 0.12), transparent),
+    radial-gradient(600px 600px at 20% 80%, rgba(0, 217, 255, 0.06), transparent), $bg-main;
+  background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-inner {
+  display: flex;
+  gap: $space-5xl;
+  align-items: center;
+}
+
+.hero-left {
+  flex: 1;
+  max-width: 560px;
+  animation: fadeInUp 0.6s $ease-smooth;
+}
+
+// ======= LABEL BADGE =======
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-sm;
+  background: linear-gradient(90deg, rgba(123, 97, 255, 0.12), rgba(0, 217, 255, 0.06));
+  padding: $space-sm $space-lg;
+  border-radius: $radius-full;
+  border: $border-thin solid rgba(0, 217, 255, 0.12);
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+  color: $accent-cyan;
+  margin-bottom: $space-2xl;
+  backdrop-filter: blur(8px);
+  transition: all $duration-base $ease-smooth;
+
+  &:hover {
+    background: linear-gradient(90deg, rgba(123, 97, 255, 0.16), rgba(0, 217, 255, 0.12));
+    border-color: rgba(0, 217, 255, 0.24);
+    box-shadow: 0 4px 16px rgba(0, 217, 255, 0.08);
+  }
+}
+
+// ======= TYPOGRAPHY =======
+.hero-title {
+  font-family: $font-display;
+  font-weight: $fw-extrabold;
+  font-size: $fs-5xl;
+  line-height: $lh-tight;
+  margin: 0 0 $space-xl;
+  color: $text-main;
+  background: linear-gradient(135deg, $text-main 0%, $accent-cyan 50%, $accent-purple 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeInUp 0.7s $ease-smooth 0.1s backwards;
+}
+
+.hero-desc {
+  max-width: 520px;
+  margin-bottom: $space-2xl;
+  color: $text-secondary;
+  font-size: $fs-lg;
+  line-height: $lh-relaxed;
+  animation: fadeInUp 0.7s $ease-smooth 0.2s backwards;
+}
+
+// ======= CTA BUTTONS =======
+.hero-cta {
+  display: flex;
+  gap: $space-lg;
+  margin-bottom: $space-3xl;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: $space-lg $space-2xl;
+  border-radius: $radius-lg;
+  font-weight: $fw-bold;
+  font-size: $fs-base;
+  cursor: pointer;
+  border: $border-thin solid transparent;
+  transition: all $duration-base $ease-smooth;
+  position: relative;
+  overflow: hidden;
+
+  &:focus {
+    outline: 2px solid rgba(0, 217, 255, 0.5);
+    outline-offset: 2px;
+  }
+}
+
+.btn.large {
+  padding: $space-lg $space-2xl;
+  font-size: $fs-lg;
+}
+
+.btn.primary {
+  background: $gradient-neon;
+  color: #071123;
+  box-shadow:
+    $shadow-md,
+    0 12px 40px rgba(0, 217, 255, 0.15);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left $duration-base $ease-smooth;
+  }
+
+  &:hover {
+    box-shadow:
+      0 12px 40px rgba(0, 217, 255, 0.25),
+      0 8px 24px rgba(123, 97, 255, 0.2);
+    transform: translateY(-2px);
+
+    &::before {
+      left: 100%;
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn.glass {
+  background: rgba(255, 255, 255, 0.02);
+  border: $border-thin solid rgba(0, 217, 255, 0.24);
+  backdrop-filter: blur(12px);
+  color: $text-main;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    $shadow-sm;
+
+  &:hover {
+    background: rgba(0, 217, 255, 0.06);
+    border-color: rgba(0, 217, 255, 0.4);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 8px 24px rgba(0, 217, 255, 0.12);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// ======= STATS ROW =======
+.stats-row {
+  display: flex;
+  gap: $space-2xl;
+  flex-wrap: wrap;
+}
+
+.stat {
+  padding: $space-xl;
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+  border-left: $border-mid solid $accent-cyan;
+  transition: all $duration-base $ease-smooth;
+
+  &:hover {
+    border-left-color: $accent-purple;
+    transform: translateX($space-sm);
+  }
+
+  strong {
+    font-size: $fs-2xl;
+    color: $accent-cyan;
+    font-weight: $fw-bold;
+  }
+
+  span {
+    font-size: $fs-sm;
+    color: $text-secondary;
+  }
+}
+
+// ======= HERO RIGHT MOCKUP =======
+.hero-right {
+  width: 520px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeInRight 0.7s $ease-smooth 0.3s backwards;
+}
+
+.mockup {
+  position: relative;
+  width: 420px;
+  height: 300px;
+  border-radius: $radius-2xl;
+  overflow: hidden;
+  background: linear-gradient(135deg, $card-elev, rgba(123, 97, 255, 0.05));
+  box-shadow:
+    0 30px 60px rgba(4, 6, 15, 0.6),
+    $shadow-glow-purple;
+  border: $border-thin solid rgba(0, 217, 255, 0.12);
+  transition: all $duration-base $ease-smooth;
+
+  &:hover {
+    box-shadow:
+      0 40px 80px rgba(4, 6, 15, 0.7),
+      $shadow-glow-cyan,
+      $shadow-glow-purple;
+    transform: translateY(-4px);
+    border-color: rgba(0, 217, 255, 0.24);
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(1.1) contrast(1.08);
+    transition: filter $duration-base $ease-smooth;
+  }
+
+  &:hover img {
+    filter: saturate(1.2) contrast(1.12);
+  }
+}
+
+// ======= ANIMATIONS =======
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+}
+.glow.purple {
+  width: 260px;
+  height: 260px;
+  right: -40px;
+  top: -60px;
+  background: rgba(123, 97, 255, 0.32);
+}
+.glow.cyan {
+  width: 220px;
+  height: 220px;
+  left: -80px;
+  bottom: -40px;
+  background: rgba(0, 217, 255, 0.12);
+}
