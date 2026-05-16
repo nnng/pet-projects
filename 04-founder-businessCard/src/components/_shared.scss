@@ -1,0 +1,96 @@
+.eyebrow,
+.service-index,
+.case-label,
+.banner-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: var(--accent-2);
+}
+
+.section-title {
+  margin: 0.4rem 0 0.75rem;
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1;
+  color: var(--text-strong);
+  font-family: var(--font-display);
+}
+
+.section-sub,
+.muted,
+.contact-note,
+.site-footer p {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.9rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--text-strong);
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  transform: translateY(-1px);
+}
+
+.btn.primary {
+  background: #0d131a;
+  color: #fff;
+  box-shadow: none;
+}
+
+.btn.primary:hover,
+.btn.primary:focus-visible {
+  background: #1a212b;
+}
+
+.btn.ghost {
+  border-color: var(--border);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.btn.ghost:hover,
+.btn.ghost:focus-visible {
+  background: #fff;
+  border-color: rgba(13, 19, 26, 0.2);
+}
+
+.reveal {
+  animation: rise-in 700ms ease both;
+}
+
+.delay-1 {
+  animation-delay: 120ms;
+}
+
+.delay-2 {
+  animation-delay: 220ms;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

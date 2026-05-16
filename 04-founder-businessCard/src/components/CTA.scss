@@ -1,0 +1,31 @@
+.cta-bar {
+  margin: 0 0 1.5rem;
+  padding: 1.25rem 0;
+}
+
+.cta-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem 1.35rem;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-elevated);
+}
+
+.cta-inner h3 {
+  margin: 0.4rem 0 0.6rem;
+  color: var(--text-strong);
+  font-size: 1.35rem;
+  line-height: 1.06;
+  font-family: var(--font-display);
+}
+
+@media (max-width: 1080px) {
+  .cta-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
