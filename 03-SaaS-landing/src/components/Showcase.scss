@@ -1,0 +1,131 @@
+.showcase__grid {
+  display: grid;
+  gap: 1.35rem;
+}
+
+.showcase__visual,
+.showcase__card,
+.showcase__usecase {
+  border-radius: 28px;
+}
+
+.showcase__visual {
+  padding: 1.1rem;
+}
+
+.showcase__visual-head {
+  max-width: 34rem;
+}
+
+.showcase__photo {
+  overflow: hidden;
+  margin: 1.1rem 0 0;
+  border-radius: 24px;
+  aspect-ratio: 1.04;
+}
+
+.showcase__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.showcase__outputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+
+.showcase__outputs span {
+  padding: 0.6rem 0.85rem;
+  border: 1px solid rgba(159, 188, 230, 0.12);
+  border-radius: 999px;
+  background: rgba(9, 14, 22, 0.45);
+  color: var(--muted-strong);
+  font-size: 0.92rem;
+}
+
+.showcase__stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.showcase__card {
+  padding: 1.2rem;
+}
+
+.showcase__card-label {
+  margin: 0;
+  color: var(--accent);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.showcase__card h3 {
+  margin: 0.8rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2vw, 1.75rem);
+  line-height: 1.06;
+}
+
+.showcase__card p {
+  margin: 0.8rem 0 0;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.showcase__result {
+  display: flex;
+  align-items: end;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.showcase__result strong {
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 7vw, 4.4rem);
+  line-height: 0.9;
+  color: var(--accent-3);
+}
+
+.showcase__result span {
+  margin-bottom: 0.35rem;
+  color: var(--text);
+}
+
+.showcase__card--result ul {
+  display: grid;
+  gap: 0.7rem;
+  margin: 1rem 0 0;
+  padding-left: 1rem;
+  color: var(--muted-strong);
+  line-height: 1.6;
+}
+
+.showcase__usecases {
+  display: grid;
+  gap: 1rem;
+}
+
+.showcase__usecase {
+  padding: 1.05rem 1.1rem;
+}
+
+.showcase__usecase h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.showcase__usecase p {
+  margin: 0.55rem 0 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+@media (min-width: 960px) {
+  .showcase__grid {
+    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+  }
+}

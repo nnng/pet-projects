@@ -1,0 +1,96 @@
+.faq__grid {
+  display: grid;
+  gap: 1.35rem;
+}
+
+.faq__list {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.faq__item {
+  padding: 1rem 1.05rem;
+  border-radius: 22px;
+}
+
+.faq__item summary {
+  cursor: pointer;
+  list-style: none;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq__item p {
+  margin: 0.8rem 0 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.faq__cta {
+  display: grid;
+  gap: 0.9rem;
+  align-content: start;
+  padding: 1.15rem;
+  border-radius: 28px;
+}
+
+.faq__cta-label {
+  margin: 0;
+  color: var(--accent);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.faq__cta h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  line-height: 1.05;
+}
+
+.faq__cta p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.faq__cta a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 2.9rem;
+  margin-top: 0.3rem;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  background: rgba(108, 248, 255, 0.14);
+  color: var(--text);
+}
+
+@media (min-width: 960px) {
+  .faq__grid {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  }
+
+  .faq__cta {
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+
+  .faq__cta h3,
+  .faq__cta p {
+    grid-column: 1;
+  }
+
+  .faq__cta a {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    align-self: center;
+  }
+}
