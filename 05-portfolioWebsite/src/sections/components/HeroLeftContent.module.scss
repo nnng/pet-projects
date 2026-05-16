@@ -1,0 +1,143 @@
+/* Hero Left Content Styles */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgba(17, 17, 17, 0.68);
+}
+
+.heading {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #111111;
+
+  .accent {
+    background: linear-gradient(135deg, #a11212 0%, #8b0d0d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 40px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 32px;
+  }
+}
+
+.description {
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(17, 17, 17, 0.72);
+  max-width: 600px;
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+
+    .btn {
+      width: 100%;
+    }
+  }
+}
+
+.btn {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  border-radius: 18px;
+  padding: 12px 28px;
+  font-family: 'Manrope', sans-serif;
+
+  &:focus-visible {
+    outline: 2px solid #111111;
+    outline-offset: 2px;
+  }
+}
+
+.btnPrimary {
+  background: var(--color-crimson);
+  color: var(--color-text-light);
+
+  &:hover {
+    background: #8b0d0d;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(161, 18, 18, 0.3);
+  }
+}
+
+.btnSecondary {
+  background: transparent;
+  color: #111111;
+  border: 1.5px solid rgba(17, 17, 17, 0.16);
+  backdrop-filter: blur(8px);
+
+  &:hover {
+    border-color: var(--color-crimson);
+    background: rgba(161, 18, 18, 0.05);
+    transform: translateY(-2px);
+  }
+}
+
+.socials {
+  display: flex;
+  gap: 24px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(17, 17, 17, 0.1);
+  margin-top: 16px;
+
+  @media (max-width: 480px) {
+    gap: 16px;
+  }
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(17, 17, 17, 0.72);
+  font-size: 12px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  text-decoration: none;
+  font-weight: 500;
+
+  &:hover {
+    color: var(--color-crimson);
+  }
+
+  &:focus-visible {
+    outline: 2px solid #111111;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+.icon {
+  font-size: 16px;
+  font-weight: 700;
+}

@@ -1,0 +1,70 @@
+@import '../styles/variables.scss';
+
+.section {
+  min-height: auto;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  padding-top: 72px;
+  color: #111111;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #111111;
+}
+
+.placeholder {
+  color: rgba(17, 17, 17, 0.72);
+  padding: 32px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.64);
+  border: 1px solid rgba(15, 15, 16, 0.08);
+}
+
+.slider {
+  display: flex;
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.testimonial {
+  background: rgba(255, 255, 255, 0.68);
+  padding: 28px;
+  border-radius: $radius-lg;
+  width: 420px;
+  border: 1px solid rgba(15, 15, 16, 0.08);
+}
+
+.quote {
+  color: #111111;
+  margin-bottom: 16px;
+}
+
+.author {
+  color: rgba(17, 17, 17, 0.62);
+  font-weight: $font-weight-semibold;
+}
+
+@media (max-width: $bp-md) {
+  .slider {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .testimonial {
+    width: 100%;
+  }
+}

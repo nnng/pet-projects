@@ -1,0 +1,74 @@
+/* CSS Variables imported globally */
+
+.visual {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.glassCard {
+  position: absolute;
+  bottom: $space-lg;
+  left: $space-lg;
+  padding: $space-md $space-lg;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: $radius-md;
+  color: $color-text-dark;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+
+  @include bp-md {
+    bottom: $space-md;
+    left: $space-md;
+    padding: $space-sm $space-md;
+    font-size: $font-size-xs;
+  }
+}
+
+.cardHeader {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  letter-spacing: $letter-spacing-wider;
+  text-transform: uppercase;
+  margin-bottom: $space-sm;
+}
+
+.cardBody {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  font-size: $font-size-base;
+}
+
+.statusIndicator {
+  width: 8px;
+  height: 8px;
+  background: #4ADE80;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+  box-shadow: 0 0 12px rgba(74, 222, 128, 0.6);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+
