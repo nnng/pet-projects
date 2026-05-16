@@ -52,5 +52,6 @@ AI_RULES.md
 /package-lock.json
 
 # Keep only projects 01-05 in the repository
+/05-portfolioWebsite/
 myFolio/
 portolioWithReactBits/
