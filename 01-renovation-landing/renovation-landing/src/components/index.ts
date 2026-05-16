@@ -1,0 +1,9 @@
+export { About } from './About';
+export { CTA } from './CTA';
+export { FeaturedProjects } from './FeaturedProjects';
+export { Footer } from './Footer';
+export { Header } from './Header';
+export { Hero } from './Hero';
+export { Process } from './Process';
+export { Services } from './Services';
+export { Testimonials } from './Testimonials';

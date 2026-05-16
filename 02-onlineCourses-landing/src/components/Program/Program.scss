@@ -1,0 +1,202 @@
+@use '../../styles/variables' as *;
+
+// ======= PROGRAM SECTION =======
+.program-section {
+  padding: $space-5xl 0;
+  background:
+    radial-gradient(600px 400px at 20% 50%, rgba(123, 97, 255, 0.08), transparent),
+    radial-gradient(500px 300px at 80% 80%, rgba(0, 217, 255, 0.05), transparent), $bg-main;
+  position: relative;
+  overflow: hidden;
+
+  h2 {
+    font-family: $font-display;
+    font-size: $fs-4xl;
+    font-weight: $fw-bold;
+    margin-bottom: $space-3xl;
+    background: linear-gradient(135deg, $text-main, $accent-cyan);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  h3 {
+    font-size: $fs-2xl;
+    font-weight: $fw-bold;
+    margin-bottom: $space-2xl;
+    color: $text-main;
+  }
+
+  p {
+    color: $text-secondary;
+    line-height: $lh-relaxed;
+  }
+}
+
+// ======= PROGRAM GRID =======
+.program-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-2xl;
+  margin-top: $space-2xl;
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+    gap: $space-xl;
+  }
+}
+
+// ======= MODULE CARD =======
+.module {
+  padding: $space-2xl;
+  border-radius: $radius-lg;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.01), rgba(0, 217, 255, 0.02));
+  border: $border-thin solid rgba(0, 217, 255, 0.08);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    $shadow-sm;
+  transition: all $duration-base $ease-smooth;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.6s $ease-smooth;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: $gradient-neon;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform $duration-base $ease-smooth;
+  }
+
+  &:hover {
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.04), rgba(123, 97, 255, 0.03));
+    border-color: rgba(0, 217, 255, 0.24);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 12px 32px rgba(0, 217, 255, 0.12),
+      $shadow-glow-purple;
+    transform: translateY(-4px);
+
+    &::before {
+      transform: scaleX(1);
+    }
+  }
+
+  .module-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: $radius-md;
+    background: $gradient-neon;
+    color: #071123;
+    font-weight: $fw-bold;
+    font-size: $fs-lg;
+    margin-bottom: $space-lg;
+    box-shadow: 0 8px 24px rgba(0, 217, 255, 0.15);
+    transition: all $duration-base $ease-smooth;
+  }
+
+  &:hover .module-number {
+    transform: scale(1.1) rotate(3deg);
+    box-shadow: 0 12px 32px rgba(0, 217, 255, 0.25);
+  }
+
+  h4 {
+    font-size: $fs-xl;
+    font-weight: $fw-bold;
+    color: $text-main;
+    margin-bottom: $space-md;
+    line-height: $lh-normal;
+  }
+
+  p {
+    font-size: $fs-base;
+    color: $text-secondary;
+    line-height: $lh-relaxed;
+    margin-bottom: $space-lg;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: $space-md;
+      margin-bottom: $space-md;
+      color: $text-secondary;
+      font-size: $fs-sm;
+      line-height: $lh-normal;
+
+      &::before {
+        content: '✓';
+        flex-shrink: 0;
+        color: $accent-cyan;
+        font-weight: $fw-bold;
+        margin-top: 2px;
+      }
+    }
+  }
+
+  .module-duration {
+    display: inline-block;
+    margin-top: $space-lg;
+    padding: $space-sm $space-md;
+    border-radius: $radius-sm;
+    background: rgba(0, 217, 255, 0.08);
+    border: $border-thin solid rgba(0, 217, 255, 0.16);
+    color: $accent-cyan;
+    font-size: $fs-xs;
+    font-weight: $fw-semibold;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-sm;
+    margin-top: $space-xl;
+    padding: $space-md $space-lg;
+    border-radius: $radius-md;
+    background: rgba(0, 217, 255, 0.1);
+    border: $border-thin solid rgba(0, 217, 255, 0.24);
+    color: $accent-cyan;
+    font-weight: $fw-semibold;
+    font-size: $fs-sm;
+    cursor: pointer;
+    transition: all $duration-base $ease-smooth;
+
+    &:hover {
+      background: rgba(0, 217, 255, 0.2);
+      border-color: rgba(0, 217, 255, 0.4);
+      box-shadow: 0 8px 16px rgba(0, 217, 255, 0.15);
+      transform: translateX(2px);
+    }
+
+    &:focus {
+      outline: 2px solid rgba(0, 217, 255, 0.5);
+      outline-offset: 2px;
+    }
+  }
+}
+
+// ======= ANIMATIONS =======
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

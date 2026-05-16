@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Turnkey renovation abstract preview">
+  <rect width="800" height="600" fill="#ece7e1"/>
+  <rect x="60" y="60" width="680" height="480" rx="28" fill="#f8f6f2"/>
+  <rect x="120" y="110" width="120" height="320" rx="16" fill="#bda48a"/>
+  <rect x="270" y="110" width="180" height="220" rx="16" fill="#d8cdc2"/>
+  <rect x="480" y="110" width="200" height="150" rx="16" fill="#a88c73"/>
+  <rect x="480" y="285" width="200" height="145" rx="16" fill="#1c1c1c" opacity="0.22"/>
+</svg>

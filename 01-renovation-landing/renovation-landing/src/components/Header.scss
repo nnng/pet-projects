@@ -1,0 +1,152 @@
+@import '../styles/variables.scss';
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 96px;
+  background-color: rgba(245, 243, 239, 0.72);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  z-index: 1000;
+  transition: all 0.3s ease;
+
+  &.scrolled {
+    background-color: rgba(245, 243, 239, 0.9);
+  }
+
+  &__container {
+    @include container;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    flex: 0 0 auto;
+    min-width: 200px;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: $gap-navigation;
+    flex: 1;
+    justify-content: center;
+    list-style: none;
+
+    @media (max-width: $bp-tablet) {
+      display: none;
+    }
+  }
+
+  &__cta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex: 0 0 auto;
+  }
+
+  &__menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    width: 24px;
+    height: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+
+    @media (max-width: $bp-tablet) {
+      display: flex;
+    }
+
+    span {
+      width: 100%;
+      height: 2px;
+      background-color: $color-primary-text;
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
+
+    &.active {
+      span {
+        &:nth-child(1) {
+          transform: rotate(45deg) translateY(10px);
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+        }
+
+        &:nth-child(3) {
+          transform: rotate(-45deg) translateY(-10px);
+        }
+      }
+    }
+  }
+}
+
+.logo {
+  &__main {
+    font-size: 16px;
+    font-weight: $weight-semibold;
+    letter-spacing: 0.1em;
+    color: $color-primary-text;
+    line-height: 1;
+  }
+
+  &__subtitle {
+    font-size: 11px;
+    color: $color-secondary-text;
+    letter-spacing: 0.05em;
+    margin-top: 4px;
+  }
+}
+
+.nav {
+  &__item {
+    position: relative;
+    font-size: 14px;
+    font-weight: $weight-medium;
+    color: $color-primary-text;
+    opacity: 0.7;
+    transition: opacity $animation-duration-medium $animation-easing;
+    text-decoration: none;
+
+    &:hover {
+      opacity: 1;
+
+      .nav__underline {
+        animation: underlineExpand $animation-duration-medium $animation-easing forwards;
+      }
+    }
+  }
+
+  &__underline {
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: $color-primary-text;
+    opacity: 0;
+    animation: none;
+    transition: opacity 0.3s ease;
+
+    @supports (background: linear-gradient(90deg, transparent, transparent)) {
+      opacity: 1;
+    }
+  }
+}
+
+.btn {
+  @include button-primary;
+
+  &--secondary {
+    @include button-secondary;
+  }
+}

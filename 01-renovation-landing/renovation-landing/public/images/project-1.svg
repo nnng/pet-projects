@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" role="img" aria-label="Penthouse Aurora abstract project image">
+  <rect width="1200" height="780" fill="#f5f3ef"/>
+  <rect x="80" y="80" width="1040" height="620" rx="30" fill="#e6ddd2"/>
+  <rect x="160" y="160" width="420" height="440" rx="24" fill="#c6a98b"/>
+  <rect x="620" y="160" width="320" height="240" rx="24" fill="#f8f6f2"/>
+  <rect x="620" y="430" width="320" height="170" rx="24" fill="#a4876c"/>
+  <circle cx="900" cy="260" r="90" fill="#d8c9bb"/>
+</svg>

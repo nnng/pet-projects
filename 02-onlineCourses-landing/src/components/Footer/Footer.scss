@@ -1,0 +1,210 @@
+@use '../../styles/variables' as *;
+
+// ======= FOOTER =======
+.site-footer {
+  padding: $space-2xl 0;
+  border-top: $border-thin solid rgba(0, 217, 255, 0.08);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.01), transparent),
+    radial-gradient(400px 200px at 50% 0%, rgba(123, 97, 255, 0.04), transparent), $bg-main;
+  transition: all $duration-base $ease-smooth;
+
+  &:hover {
+    border-top-color: rgba(0, 217, 255, 0.16);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent),
+      radial-gradient(400px 200px at 50% 0%, rgba(123, 97, 255, 0.06), transparent), $bg-main;
+  }
+}
+
+// ======= FOOTER INNER =======
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $space-2xl;
+
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+// ======= FOOTER LOGO =======
+.footer-inner .logo {
+  font-family: $font-display;
+  font-weight: $fw-bold;
+  font-size: $fs-lg;
+  color: $text-main;
+  text-decoration: none;
+  text-shadow: 0 6px 18px rgba(123, 97, 255, 0.08);
+  transition: all $duration-base $ease-smooth;
+
+  &:hover {
+    text-shadow: 0 8px 32px rgba(0, 217, 255, 0.15);
+    background: $gradient-neon;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  &:focus {
+    outline: 2px solid rgba(0, 217, 255, 0.5);
+    outline-offset: 2px;
+    border-radius: $radius-sm;
+  }
+}
+
+// ======= FOOTER CONTENT =======
+.footer-content {
+  display: flex;
+  gap: $space-3xl;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+    gap: $space-xl;
+    width: 100%;
+  }
+}
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+  min-width: 160px;
+
+  h4 {
+    font-family: $font-display;
+    font-size: $fs-sm;
+    font-weight: $fw-bold;
+    color: $text-main;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+  }
+
+  a,
+  p {
+    font-size: $fs-sm;
+    color: $text-tertiary;
+    text-decoration: none;
+    transition: all $duration-base $ease-smooth;
+
+    &:hover {
+      color: $accent-cyan;
+    }
+
+    &:focus {
+      outline: 2px solid rgba(0, 217, 255, 0.5);
+      outline-offset: 2px;
+      border-radius: $radius-sm;
+    }
+  }
+}
+
+// ======= FOOTER SOCIALS =======
+.footer-socials {
+  display: flex;
+  gap: $space-md;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(0, 217, 255, 0.08), rgba(123, 97, 255, 0.05));
+  border: $border-thin solid rgba(0, 217, 255, 0.12);
+  color: $accent-cyan;
+  text-decoration: none;
+  transition: all $duration-base $ease-smooth;
+  font-size: $fs-lg;
+
+  &:hover {
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.16), rgba(123, 97, 255, 0.12));
+    border-color: rgba(0, 217, 255, 0.32);
+    box-shadow: 0 8px 20px rgba(0, 217, 255, 0.15);
+    transform: translateY(-2px);
+  }
+
+  &:focus {
+    outline: 2px solid rgba(0, 217, 255, 0.5);
+    outline-offset: 2px;
+  }
+}
+
+// ======= FOOTER DIVIDER =======
+.footer-divider {
+  display: block;
+  width: 1px;
+  height: 24px;
+  background: linear-gradient(180deg, transparent, rgba(0, 217, 255, 0.24), transparent);
+  margin: 0 $space-lg;
+
+  @media (max-width: $breakpoint-md) {
+    display: none;
+  }
+}
+
+// ======= FOOTER BOTTOM =======
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $space-xl;
+  margin-top: $space-2xl;
+  padding-top: $space-2xl;
+  border-top: $border-thin solid rgba(255, 255, 255, 0.06);
+  flex-wrap: wrap;
+
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+    text-align: center;
+    gap: $space-lg;
+  }
+
+  p {
+    font-size: $fs-xs;
+    color: $text-tertiary;
+    margin: 0;
+  }
+}
+
+.disclaimer {
+  display: block;
+  margin-top: 8px;
+  font-size: $fs-xs;
+  color: $text-tertiary;
+  opacity: 0.9;
+}
+
+.footer-links {
+  display: flex;
+  gap: $space-lg;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  a {
+    font-size: $fs-xs;
+    color: $text-tertiary;
+    text-decoration: none;
+    transition: all $duration-base $ease-smooth;
+
+    &:hover {
+      color: $accent-cyan;
+    }
+
+    &:focus {
+      outline: 2px solid rgba(0, 217, 255, 0.5);
+      outline-offset: 2px;
+    }
+  }
+}

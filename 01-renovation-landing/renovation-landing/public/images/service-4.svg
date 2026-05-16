@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Custom furniture abstract preview">
+  <rect width="800" height="600" fill="#ece7e1"/>
+  <rect x="80" y="80" width="640" height="440" rx="26" fill="#f7f3ef"/>
+  <rect x="140" y="160" width="520" height="70" rx="16" fill="#c6a98b"/>
+  <rect x="140" y="260" width="360" height="70" rx="16" fill="#b09a84"/>
+  <rect x="140" y="360" width="460" height="70" rx="16" fill="#8d7358"/>
+</svg>

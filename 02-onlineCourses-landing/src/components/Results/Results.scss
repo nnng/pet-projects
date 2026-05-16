@@ -1,0 +1,180 @@
+@use '../../styles/variables' as *;
+
+// ======= RESULTS SECTION =======
+.results {
+  padding: $space-5xl 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.01), transparent),
+    radial-gradient(600px 400px at 50% 50%, rgba(0, 217, 255, 0.05), transparent), $bg-main;
+  position: relative;
+  overflow: hidden;
+
+  width: 100%;
+  margin-top: 2%;
+
+  h2 {
+    font-family: $font-display;
+    font-size: $fs-4xl;
+    font-weight: $fw-bold;
+    margin-bottom: $space-3xl;
+    text-align: center;
+    background: linear-gradient(135deg, $text-main, $accent-green);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+// ======= CASES CONTAINER =======
+.cases {
+  display: flex;
+  gap: $space-2xl;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  @media (max-width: $breakpoint-lg) {
+    flex-direction: column;
+  }
+}
+
+// ======= CASE CARD =======
+.case {
+  padding: $space-2xl;
+  flex: 1;
+  min-width: 300px;
+  border-radius: $radius-lg;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.01), rgba(0, 217, 255, 0.02));
+  border: $border-thin solid rgba(0, 217, 255, 0.08);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    $shadow-sm;
+  transition: all $duration-base $ease-smooth;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.6s $ease-smooth;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(0, 217, 255, 0.1), transparent);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translateX(-50%);
+    transition: all $duration-slow $ease-smooth;
+  }
+
+  &:hover {
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.05), rgba(123, 97, 255, 0.03));
+    border-color: rgba(0, 217, 255, 0.24);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 12px 40px rgba(0, 217, 255, 0.15),
+      $shadow-glow-cyan;
+    transform: translateY(-4px);
+
+    &::before {
+      top: 10%;
+    }
+  }
+
+  .case-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: $radius-md;
+    background: $gradient-cyan-purple;
+    color: #071123;
+    font-family: $font-display;
+    font-weight: $fw-bold;
+    font-size: $fs-2xl;
+    margin-bottom: $space-lg;
+    box-shadow: 0 8px 24px rgba(0, 217, 255, 0.15);
+    transition: all $duration-base $ease-smooth;
+  }
+
+  &:hover .case-number {
+    transform: scale(1.15) rotate(-3deg);
+    box-shadow: 0 12px 32px rgba(0, 217, 255, 0.25);
+  }
+
+  h4 {
+    font-family: $font-display;
+    font-size: $fs-xl;
+    font-weight: $fw-bold;
+    color: $text-main;
+    margin: 0 0 $space-md;
+    line-height: $lh-normal;
+  }
+
+  p {
+    font-size: $fs-base;
+    color: $text-secondary;
+    line-height: $lh-relaxed;
+    margin: 0 0 $space-lg;
+  }
+
+  .case-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-lg;
+    margin-top: $space-xl;
+    padding-top: $space-xl;
+    border-top: $border-thin solid rgba(255, 255, 255, 0.06);
+  }
+
+  .metric {
+    display: flex;
+    flex-direction: column;
+    gap: $space-sm;
+  }
+
+  .metric-value {
+    font-family: $font-display;
+    font-size: $fs-2xl;
+    font-weight: $fw-bold;
+    background: linear-gradient(135deg, $accent-cyan, $accent-green);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: $lh-tight;
+  }
+
+  .metric-label {
+    font-size: $fs-xs;
+    color: $text-tertiary;
+    font-weight: $fw-medium;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .case-tag {
+    display: inline-block;
+    margin-top: $space-lg;
+    padding: $space-sm $space-md;
+    border-radius: $radius-sm;
+    background: rgba(0, 245, 160, 0.08);
+    border: $border-thin solid rgba(0, 245, 160, 0.16);
+    color: $accent-green;
+    font-size: $fs-xs;
+    font-weight: $fw-semibold;
+  }
+}
+
+// ======= ANIMATIONS =======
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

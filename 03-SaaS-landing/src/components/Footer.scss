@@ -1,0 +1,235 @@
+.site-footer {
+  padding: 0 0 2rem;
+}
+
+.site-footer__inner {
+  display: grid;
+
+  .site-footer__disclaimer {
+    color: rgba(17, 17, 17, 0.6);
+    font-size: 13px;
+    margin-top: 6px;
+  }
+  gap: 1.35rem;
+  padding: 1.2rem;
+  border-radius: 28px;
+}
+
+.site-footer__brand {
+  display: inline-flex;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  letter-spacing: -0.04em;
+}
+
+.site-footer__inner p {
+  margin: 0;
+  max-width: 48ch;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.site-footer__nav,
+.site-footer__meta {
+  display: grid;
+  gap: 0.65rem;
+  color: var(--muted-strong);
+}
+
+.site-footer__nav a:hover {
+  color: var(--text);
+}
+
+.site-footer__meta {
+  font-size: 0.92rem;
+}
+
+@media (min-width: 860px) {
+  .site-footer__inner {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.8fr) minmax(0, 0.8fr);
+    align-items: start;
+  }
+}
+.site-footer {
+  color: var(--text-secondary);
+  padding: 80px 20px 40px;
+  background: linear-gradient(180deg, rgba(37, 99, 235, 0.04), rgba(34, 211, 238, 0.02));
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  margin-top: 60px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr repeat(3, 1fr);
+  gap: 48px;
+  margin-bottom: 48px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-logo {
+  display: block;
+  font-weight: 800;
+  color: var(--deep-blue);
+  font-size: 1.25rem;
+  transition:
+    color 0.25s ease,
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:hover,
+  &:focus-visible {
+    color: var(--cyan);
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--deep-blue);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+}
+
+.footer-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 320px;
+}
+
+.social-links {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+
+  a {
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition:
+      color 0.25s ease,
+      transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+
+    &:hover,
+    &:focus-visible {
+      color: var(--deep-blue);
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--deep-blue);
+      outline-offset: 2px;
+    }
+  }
+}
+
+.site-footer .col {
+  opacity: 1;
+
+  h4 {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 0 0 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-transform: capitalize;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    margin-bottom: 12px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.25s ease;
+    display: inline-block;
+    min-height: 44px;
+    min-width: 44px;
+    line-height: 44px;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--deep-blue);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--deep-blue);
+      outline-offset: 2px;
+    }
+  }
+}
+
+.footer-bottom {
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+
+  p {
+    margin: 0;
+    line-height: 1.6;
+  }
+}
+
+.site-footer__demo {
+  margin-top: 0.55rem;
+  color: var(--muted-strong);
+  font-size: 0.88rem;
+  opacity: 0.95;
+}
+
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 60px 20px 30px;
+  }
+
+  .footer-grid {
+    margin-bottom: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-logo,
+  .social-links a,
+  .col a {
+    transition: color 0.15s ease;
+
+    &:hover {
+      transform: none;
+    }
+  }
+}

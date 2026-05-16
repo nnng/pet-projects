@@ -1,0 +1,20 @@
+.footer {
+  background: transparent;
+  padding: 28px 0;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgba(17, 17, 17, 0.8);
+}
+
+.left,
+.center,
+.right {
+  font-weight: 600;
+}

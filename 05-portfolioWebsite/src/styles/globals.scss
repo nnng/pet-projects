@@ -1,0 +1,297 @@
+/* ============================================
+   GOOGLE FONTS IMPORT
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+/* ============================================
+   VARIABLES IMPORT
+   ============================================ */
+
+    background: $color-primary-bg;
+
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+    radial-gradient(circle, rgba(161, 18, 18, 0.14) 1px, transparent 1.5px);
+  background-size:
+    auto,
+    88px 88px,
+    88px 88px,
+    18px 18px;
+  background-position: center;
+  pointer-events: none;
+  z-index: $z-background;
+}
+
+/* Layer 2: Subtle grain texture */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" result="noise" /></filter><rect width="1024" height="1024" fill="%23F4EFE7" filter="url(%23noiseFilter)" opacity="0.04"/></svg>');
+  background-size: 256px 256px;
+  pointer-events: none;
+  z-index: $z-background;
+  animation: grain-animation 20s linear infinite;
+}
+
+/* ============================================
+   DARK SECTIONS OVERRIDE
+   ============================================ */
+
+.section-dark {
+  background: linear-gradient(135deg, $color-dark 0%, $color-brown 100%) !important;
+  color: $color-text-dark;
+}
+
+.section-dark::before {
+  background: linear-gradient(135deg, $color-dark 0%, $color-brown 100%) !important;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+h1 {
+  @include heading-1;
+}
+
+h2 {
+  @include heading-2;
+}
+
+h3 {
+  @include heading-3;
+}
+
+p {
+  @include body-base;
+  color: $color-text-light;
+}
+
+a {
+  color: $color-crimson;
+  text-decoration: none;
+  transition: color $transition-base $easing-out;
+
+  &:hover {
+    color: darken($color-crimson, 10%);
+  }
+}
+
+strong {
+  font-weight: $font-weight-bold;
+}
+
+em {
+  font-style: italic;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+button {
+  font-family: $font-body;
+  border: none;
+  cursor: pointer;
+  transition: all $transition-base $easing-out;
+
+  &:focus-visible {
+    outline: 2px solid $color-crimson;
+    outline-offset: 2px;
+  }
+}
+
+.btn {
+  padding: $space-md $space-xl;
+  border-radius: $radius-md;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-base;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-sm;
+  white-space: nowrap;
+  transition: all $transition-base $easing-out;
+
+  /* Primary Button */
+  &.btn-primary {
+    background: $color-crimson;
+    color: $color-text-dark;
+    box-shadow: $shadow-md;
+
+    &:hover {
+      background: darken($color-crimson, 8%);
+      box-shadow: $shadow-glow;
+      transform: translateY(-4px);
+    }
+
+    &:active {
+      transform: translateY(-2px);
+    }
+  }
+
+  /* Secondary Button (Glass) */
+  &.btn-secondary {
+    background: rgba(255, 255, 255, 0.72);
+    color: $color-text-light;
+    border: 1px solid rgba(15, 15, 16, 0.12);
+    box-shadow: 0 8px 18px rgba(15, 15, 16, 0.04);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.88);
+      border-color: $color-crimson;
+      color: $color-crimson;
+      box-shadow: 0 10px 20px rgba(161, 18, 18, 0.08);
+    }
+  }
+
+  /* Small Button */
+  &.btn-sm {
+    padding: $space-sm $space-md;
+    font-size: $font-size-sm;
+  }
+
+  /* Large Button */
+  &.btn-lg {
+    padding: $space-lg $space-2xl;
+    font-size: $font-size-lg;
+  }
+}
+
+/* ============================================
+   FORM ELEMENTS
+   ============================================ */
+
+input,
+textarea,
+select {
+  font-family: $font-body;
+  font-size: $font-size-base;
+  padding: $space-md;
+  border-radius: $radius-md;
+  border: 1px solid $color-border;
+  background: $color-glass;
+  color: $color-text-dark;
+  transition: all $transition-base $easing-out;
+
+  &::placeholder {
+    color: $color-text-secondary;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-crimson;
+    box-shadow: 0 0 16px rgba(161, 18, 18, 0.12);
+  }
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* ============================================
+   LINKS & INTERACTIONS
+   ============================================ */
+
+a:focus-visible {
+  outline: 2px solid $color-crimson;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(15, 15, 16, 0.2);
+  border-radius: 4px;
+  transition: background $transition-base $easing-out;
+
+  &:hover {
+    background: rgba(15, 15, 16, 0.4);
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.container {
+  @include container;
+}
+
+.section {
+  @include section;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+/* ============================================
+   DARK MODE SUPPORT
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: $color-dark;
+    color: $color-text-dark;
+  }
+
+  p {
+    color: $color-text-dark;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

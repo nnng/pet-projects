@@ -1,0 +1,19 @@
+@import './styles/variables.scss';
+
+main {
+  width: 100%;
+}
+
+// Page transition effect
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+html {
+  animation: pageEnter 0.6s ease-out;
+}
